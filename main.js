@@ -1,6 +1,9 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow, Tray, nativeImage} = require('electron')
 const path = require('path')
+const Store = require('electron-store')
+
+
 
 let tray, window
 
@@ -83,3 +86,11 @@ app.on('window-all-closed', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+const store = new Store()
+
+store.set("user_settings.theme", "dark")
+
+console.log("theme", store.get('user_settings.theme'))
+
+console.log(app.getPath('userData'))
